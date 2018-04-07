@@ -83,7 +83,6 @@ function handleItemCheckClicked() {
   });
 }
 
-// name says it all. responsible for deleting a list item.
 function deleteListItem(itemIndex) {
   console.log(`Deleting item at index  ${itemIndex} from shopping list`)
 
@@ -110,10 +109,6 @@ function handleDeleteItemClicked() {
   });
 }
 
-// this function will be our callback when the page loads. it's responsible for
-// initially rendering the shopping list, and activating our individual functions
-// that handle new item submission and user clicks on the "check" and "delete" buttons
-// for individual shopping list items.
 function handleShoppingList() {
   renderShoppingList();
   handleNewItemSubmit();
@@ -121,5 +116,4 @@ function handleShoppingList() {
   handleDeleteItemClicked();
 }
 
-// when the page loads, call `handleShoppingList`
 $(handleShoppingList);
