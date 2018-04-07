@@ -12,6 +12,9 @@ const STORE = {
 
 
 function generateItemElement(item, itemIndex, template) {
+  if(STORE.hideCompleted && item.checked)
+    return '';
+
   return `
     <li class="js-item-index-element" data-item-index="${itemIndex}">
       <span class="shopping-item js-shopping-item ${item.checked ? "shopping-item__checked" : ''}">${item.name}</span>
@@ -120,7 +123,6 @@ function handleHideCompletedItemsClicked() {
   $('#hideCompletedItems').on('click', event => {
     console.log('`handleHideCompletedItemsClicked` ran');
     toggleHideCompletedForList();
-    console.log(STORE);
     renderShoppingList();
   });
 }
