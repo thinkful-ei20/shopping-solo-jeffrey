@@ -112,12 +112,17 @@ function handleDeleteItemClicked() {
 
 
 function toggleHideCompletedForList() {
-  console.log('`toggleHideCompletedForList` ran');
+  console.log("Toggling hideCompleted property for list to " + !STORE.hideCompleted);
+  STORE.hideCompleted = !STORE.hideCompleted;
 }
 
 function handleHideCompletedItemsClicked() {
-  console.log('`handleHideCompletedItemsClicked` ran');
-  toggleHideCompletedForList()  
+  $('#hideCompletedItems').on('click', event => {
+    console.log('`handleHideCompletedItemsClicked` ran');
+    toggleHideCompletedForList();
+    console.log(STORE);
+    renderShoppingList();
+  });
 }
 
 function handleShoppingList() {
