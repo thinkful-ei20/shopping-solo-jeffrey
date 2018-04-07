@@ -7,6 +7,7 @@ const STORE = {
     {name: "milk", checked: true},
     {name: "bread", checked: false}
   ],
+  hideCompleted: false,
 };
 
 
@@ -109,11 +110,22 @@ function handleDeleteItemClicked() {
   });
 }
 
+
+function toggleHideCompletedForList() {
+  console.log('`toggleHideCompletedForList` ran');
+}
+
+function handleHideCompletedItemsClicked() {
+  console.log('`handleHideCompletedItemsClicked` ran');
+  toggleHideCompletedForList()  
+}
+
 function handleShoppingList() {
   renderShoppingList();
   handleNewItemSubmit();
   handleItemCheckClicked();
   handleDeleteItemClicked();
+  handleHideCompletedItemsClicked();
 }
 
 $(handleShoppingList);
