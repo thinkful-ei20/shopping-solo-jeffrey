@@ -130,12 +130,23 @@ function handleHideCompletedItemsClicked() {
   });
 }
 
+function setSearchNameForList() {
+  console.log('`setSearchNameForList` ran');
+}
+
+function handleSearchNameClicked() {  
+  console.log('`handleSearchNameClicked` ran');
+  setSearchNameForList();
+  renderShoppingList();
+}
+
 function handleShoppingList() {
   renderShoppingList();
   handleNewItemSubmit();
   handleItemCheckClicked();
   handleDeleteItemClicked();
   handleHideCompletedItemsClicked();
+  handleSearchNameClicked();
 }
 
 $(handleShoppingList);
