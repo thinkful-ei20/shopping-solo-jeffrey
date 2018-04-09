@@ -12,9 +12,6 @@ const STORE = {
 
 
 function generateItemElement(item, itemIndex, template) {
-  if(STORE.hideCompleted && item.checked)
-    return '';
-
   return `
     <li class="js-item-index-element" data-item-index="${itemIndex}">
       <span class="shopping-item js-shopping-item ${item.checked ? "shopping-item__checked" : ''}">${item.name}</span>
@@ -33,7 +30,12 @@ function generateItemElement(item, itemIndex, template) {
 function generateShoppingItemsString(shoppingList) {
   console.log("Generating shopping list element");
 
-  const items = shoppingList.map((item, index) => generateItemElement(item, index));
+  const items = shoppingList.map((item, index) => {
+    if(STORE.hideCompleted && item.checked)
+      return '';
+    
+      return generateItemElement(item, index);
+  });
   
   return items.join("");
 }
