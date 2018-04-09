@@ -150,14 +150,22 @@ function handleSearchNameClicked() {
   });
 }
 
-function editListItem() {
-  console.log('`editListItem` ran');
+function editListItemName(itemIndex, name) {
+  console.log(`Editing item name at index ${itemIndex} from ${STORE.items[itemIndex].name} to ${name}`);
+
+  STORE.items[itemIndex].name = name;
 }
 
 function handleEditItemNameClicked() {
-  console.log('`handleEditItemNameClicked` ran');
-  editListItem();
-  renderShoppingList();
+  $('.js-shopping-list').on('click', `.js-item-edit`, event => {
+    console.log('`handleEditItemNameClicked` ran');
+    const itemIndex = getItemIndexFromElement(event.currentTarget);
+    const name = prompt("What would you like to change this to?", STORE.items[itemIndex].name);
+    if((name !== null && name !== '') && name !== STORE.items[itemIndex].name) {
+      editListItemName(itemIndex, name);
+      renderShoppingList();
+    }
+  });
 }
 
 function handleShoppingList() {
