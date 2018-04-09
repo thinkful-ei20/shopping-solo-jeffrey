@@ -8,7 +8,7 @@ const STORE = {
     {name: "bread", checked: false}
   ],
   hideCompleted: false,
-  searchTerm: null,
+  searchName: null,
 };
 
 
@@ -35,7 +35,10 @@ function generateShoppingItemsString(shoppingList) {
     if(STORE.hideCompleted && item.checked)
       return '';
     
-      return generateItemElement(item, index);
+    if(STORE.searchName && !item.name.toLowerCase().includes(STORE.searchName.toLowerCase()))
+      return '';
+
+    return generateItemElement(item, index);
   });
   
   return items.join("");
@@ -130,14 +133,18 @@ function handleHideCompletedItemsClicked() {
   });
 }
 
-function setSearchNameForList() {
-  console.log('`setSearchNameForList` ran');
+function setSearchNameForList(searchName) {
+  console.log(`Changing STORE.searchName value from '${STORE.searchName} to '${searchName}'`);
+  STORE.searchName = searchName;
 }
 
 function handleSearchNameClicked() {  
-  console.log('`handleSearchNameClicked` ran');
-  setSearchNameForList();
-  renderShoppingList();
+  $('#searchName').on('keyup', event => {
+    console.log('`handleSearchNameClicked` ran');
+    const searchName = event.currentTarget.value;
+    setSearchNameForList(searchName);
+    renderShoppingList();
+  });
 }
 
 function handleShoppingList() {
