@@ -8,6 +8,7 @@ const STORE = {
     {name: "bread", checked: false}
   ],
   hideCompleted: false,
+  searchTerm: null,
 };
 
 
