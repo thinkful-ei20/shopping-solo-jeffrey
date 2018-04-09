@@ -20,7 +20,7 @@ function generateItemElement(item, itemIndex, template) {
         <button class="shopping-item-toggle js-item-toggle">
             <span class="button-label">check</span>
         </button>
-        <button class="shopping-item-delete js-item-edit">
+        <button class="shopping-item-edit js-item-edit">
             <span class="button-label">edit</span>
         </button>
         <button class="shopping-item-delete js-item-delete">
@@ -150,6 +150,16 @@ function handleSearchNameClicked() {
   });
 }
 
+function editListItem() {
+  console.log('`editListItem` ran');
+}
+
+function handleEditItemNameClicked() {
+  console.log('`handleEditItemNameClicked` ran');
+  editListItem();
+  renderShoppingList();
+}
+
 function handleShoppingList() {
   renderShoppingList();
   handleNewItemSubmit();
@@ -157,6 +167,7 @@ function handleShoppingList() {
   handleDeleteItemClicked();
   handleHideCompletedItemsClicked();
   handleSearchNameClicked();
+  handleEditItemNameClicked();
 }
 
 $(handleShoppingList);
